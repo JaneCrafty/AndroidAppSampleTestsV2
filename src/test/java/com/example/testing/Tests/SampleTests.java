@@ -20,6 +20,8 @@ public class SampleTests extends Watcher {
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
         Assertions.assertNotNull(welcomePage.getSignUpButton(), "❌ signUpButton is null");
         getMobileDriver().getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
+        System.out.println("✏️ emailInput is " + welcomePage.getEmailInput());
+        Assertions.assertNotNull(welcomePage.getEmailInput(), "❌ emailInput is null");
         welcomePage.getEmailInput().sendKeys(email);
         welcomePage.getPasswordInput().sendKeys(password);
         MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
