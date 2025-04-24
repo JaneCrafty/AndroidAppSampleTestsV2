@@ -23,7 +23,9 @@ public class WelcomePage {
         if (mobileDriver.getDriver() == null) {
             throw new RuntimeException("❌ Driver is null inside WelcomePage constructor");
         }
-        PageFactory.initElements(new AppiumFieldDecorator(mobileDriver.getDriver(), Duration.ofSeconds(10)), this);    }
+        PageFactory.initElements(new AppiumFieldDecorator(mobileDriver.getDriver(), Duration.ofSeconds(10)), this);
+        System.out.println("✅ WelcomePage initialized. SignUpButton: " + (_signUpButton != null));
+    }
 
     public AndroidElement getEmailInput() { return _emailInput; }
     public AndroidElement getPasswordInput() { return _passwordInput; }
