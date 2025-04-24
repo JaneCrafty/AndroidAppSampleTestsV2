@@ -17,7 +17,6 @@ public class SampleTests extends Watcher {
         String password = GetRandomPassword();
 
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
-        Thread.sleep(2000);
         System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
         System.out.println("✏️ emailInput is " + welcomePage.getEmailInput());
         Assertions.assertNotNull(welcomePage.getEmailInput(), "❌ emailInput is null");
@@ -38,7 +37,6 @@ public class SampleTests extends Watcher {
     @Test
     public void registrationWithEmptyFieldsShouldNotProceedTest() throws InterruptedException {
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
-        Thread.sleep(2000);
         System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
         Assertions.assertNotNull(welcomePage.getSignUpButton(), "❌ signUpButton is null");
 
@@ -52,7 +50,6 @@ public class SampleTests extends Watcher {
     @Test
     public void closeAppWithCloseButtonTest() throws InterruptedException {
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
-        Thread.sleep(2000);
         System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
         Assertions.assertNotNull(welcomePage.getSignUpButton(), "❌ signUpButton is null");
 

@@ -4,7 +4,9 @@ import framework.MobileDriver;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.NoSuchElementException;
@@ -48,13 +50,8 @@ public class MainPage {
     }
 
     private WebElement waitForElement(By locator) {
-        System.out.println("driver class: " + mobileDriver.getDriver().getClass().getName());
-        FluentWait<AppiumDriver<WebElement>> wait = new FluentWait<>((AppiumDriver<WebElement>) mobileDriver.getDriver())
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofMillis(500))
-                .ignoring(NoSuchElementException.class);
-
-        return wait.until(driver -> driver.findElement(locator));
+        WebDriverWait wait = new WebDriverWait(mobileDriver.getDriver(), 15);
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 }
 
