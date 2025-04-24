@@ -10,6 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 import java.time.Duration;
 
 public class WelcomePage {
+    private MobileDriver mobileDriver;
+
     @AndroidFindBy(id = "com.example.demo:id/email")
     private AndroidElement _emailInput;
 
@@ -20,6 +22,7 @@ public class WelcomePage {
     private AndroidElement _signUpButton;
 
     public WelcomePage(MobileDriver mobileDriver) {
+        this.mobileDriver = mobileDriver;
         if (mobileDriver.getDriver() == null) {
             throw new RuntimeException("❌ Driver is null inside WelcomePage constructor");
         }
