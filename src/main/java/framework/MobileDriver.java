@@ -24,6 +24,7 @@ public class MobileDriver {
         return _wait;
     }
     public void StartAndroidDriver() throws MalformedURLException {
+        try {
         URL url = new URL(this.url);
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("browserstack.user", "janecrafty_7NRt2Q");
@@ -36,6 +37,12 @@ public class MobileDriver {
         caps.setCapability("autoGrantPermissions", true);
 
         driver = new AndroidDriver<>(url, caps);
+
+        System.out.println("✅ Appium session started");
+    } catch (Exception e) {
+        System.err.println("❌ Error in StartAndroidDriver: " + e.getMessage());
+        e.printStackTrace();
+    }
     }
 
     public void setTestName(String name) {

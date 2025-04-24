@@ -19,6 +19,7 @@ public class Watcher {
     public static void setUp() throws MalformedURLException {
         mobileDriver = new MobileDriver();
         mobileDriver.StartAndroidDriver();
+        System.out.println("Driver initialized in @BeforeAll");
     }
 
     @BeforeEach
