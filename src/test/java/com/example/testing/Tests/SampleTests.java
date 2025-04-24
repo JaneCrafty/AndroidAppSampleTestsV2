@@ -30,6 +30,8 @@ public class SampleTests extends Watcher {
         Assertions.assertTrue(mainPage.getPassField().getText().contains(password));
         Assertions.assertTrue(mainPage.getLogoutButton().isDisplayed());
         Assertions.assertTrue(mainPage.getCloseButton().isDisplayed());
+        mainPage.getLogoutButton().click();
+
     }
 
     @Test
