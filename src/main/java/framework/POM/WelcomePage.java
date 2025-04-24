@@ -49,7 +49,7 @@ public class WelcomePage {
     }
 
     private WebElement waitForElement(By locator) {
-        FluentWait<AppiumDriver> wait = new FluentWait<>(mobileDriver.getDriver())
+        FluentWait<AppiumDriver<WebElement>> wait = new FluentWait<>((AppiumDriver<WebElement>) mobileDriver.getDriver())
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoring(NoSuchElementException.class);
