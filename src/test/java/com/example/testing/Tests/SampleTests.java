@@ -52,8 +52,8 @@ public class SampleTests extends Watcher {
         MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
         mainPage.getCloseButton().click();
 
-        Assertions.assertNull(getMobileDriver().getSessionId());
-    }
+        String currentActivity = getMobileDriver().getCurrentActivity();
+        Assertions.assertNotEquals(".MainActivity", currentActivity);    }
 }
 
 //package com.example.testing.Tests;

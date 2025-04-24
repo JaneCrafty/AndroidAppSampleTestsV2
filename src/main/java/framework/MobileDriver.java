@@ -51,6 +51,13 @@ public class MobileDriver {
         }
     }
 
+    public String getCurrentActivity() {
+        if (driver instanceof AndroidDriver) {
+            return ((AndroidDriver<?>) driver).currentActivity();
+        }
+        throw new UnsupportedOperationException("Current activity is only supported for AndroidDriver.");
+    }
+
     public void TearDown() {
         if (driver != null) {
             driver.quit();
