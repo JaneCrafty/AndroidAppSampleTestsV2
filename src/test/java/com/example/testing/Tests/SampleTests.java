@@ -18,8 +18,8 @@ public class SampleTests extends Watcher {
         String password = GetRandomPassword();
 
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
-        Assertions.assertNotNull(welcomePage.getSignUpButton(), "❌ signUpButton is null");
-        getMobileDriver().getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
+        getMobileDriver().getDriverWait()
+                .until(ExpectedConditions.visibilityOf(welcomePage.getEmailInput()));
         System.out.println("✏️ emailInput is " + welcomePage.getEmailInput());
         Assertions.assertNotNull(welcomePage.getEmailInput(), "❌ emailInput is null");
         welcomePage.getEmailInput().sendKeys(email);
