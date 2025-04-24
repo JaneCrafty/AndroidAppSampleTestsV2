@@ -23,9 +23,6 @@ public class Watcher {
 
     @AfterEach
     public void tearDown(TestInfo testInfo) {
-        boolean passed = testInfo.getTags().contains("passed"); // или анализ по-другому
-        String reason = passed ? "Test passed" : "Test failed or error occurred";
-        markTestStatus(getMobileDriver().getDriver(), passed, reason);
         getMobileDriver().TearDown();
     }
 
