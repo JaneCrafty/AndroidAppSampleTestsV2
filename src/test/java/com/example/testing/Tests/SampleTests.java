@@ -33,13 +33,16 @@ public class SampleTests extends Watcher {
     }
 
     @Test
-    public void registrationWithEmptyFieldsShouldNotProceedTest() {
+    public void logOutTest() {
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
         System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
-        welcomePage.getEmailInput().clear();
-        welcomePage.getPasswordInput().clear();
-        welcomePage.clickSignUpButton(getMobileDriver());
-
+        welcomePage.getEmailInput().sendKeys(GetRandomEmail());
+        welcomePage.getPasswordInput().sendKeys(GetRandomPassword());
+        MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
+        System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
+        mainPage.getTitle().isDisplayed();
+        mainPage.getLogoutButton().click();
+        System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
         Assertions.assertTrue(welcomePage.getEmailInput().isDisplayed());
     }
 
