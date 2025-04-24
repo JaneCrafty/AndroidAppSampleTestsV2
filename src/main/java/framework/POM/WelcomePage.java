@@ -28,9 +28,13 @@ public class WelcomePage {
         }
         PageFactory.initElements(new AppiumFieldDecorator(mobileDriver.getDriver(), Duration.ofSeconds(10)), this);
         System.out.println("✅ WelcomePage initialized. SignUpButton: " + (_signUpButton != null));
+        System.out.println("📄 Page Source:\n" + mobileDriver.getDriver().getPageSource());
+
     }
 
-    public AndroidElement getEmailInput() { return _emailInput; }
+    public AndroidElement getEmailInput() {
+        System.out.println("🧪 getEmailInput() called, value: " + _emailInput);
+        return _emailInput; }
     public AndroidElement getPasswordInput() { return _passwordInput; }
     public AndroidElement getSignUpButton() { return _signUpButton; }
 
