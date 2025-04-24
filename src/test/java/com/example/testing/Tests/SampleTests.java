@@ -17,7 +17,6 @@ public class SampleTests extends Watcher {
         String password = GetRandomPassword();
 
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
-        System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
         welcomePage.getEmailInput().sendKeys(email);
         welcomePage.getPasswordInput().sendKeys(password);
         MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
@@ -37,21 +36,17 @@ public class SampleTests extends Watcher {
     @Test
     public void logOutTest() {
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
-        System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
         welcomePage.getEmailInput().sendKeys(GetRandomEmail());
         welcomePage.getPasswordInput().sendKeys(GetRandomPassword());
         MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
-        System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
         mainPage.getTitle().isDisplayed();
         mainPage.getLogoutButton().click();
-        System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
         Assertions.assertTrue(welcomePage.getEmailInput().isDisplayed());
     }
 
     @Test
     public void closeAppWithCloseButtonTest() {
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
-        System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
         welcomePage.getEmailInput().sendKeys(GetRandomEmail());
         welcomePage.getPasswordInput().sendKeys(GetRandomPassword());
         MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
