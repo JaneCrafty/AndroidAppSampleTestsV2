@@ -27,7 +27,6 @@ public class Watcher {
         getMobileDriver().setTestName(testName);
     }
 
-
     @AfterAll
     public static void tearDown() {
         getMobileDriver().TearDown();

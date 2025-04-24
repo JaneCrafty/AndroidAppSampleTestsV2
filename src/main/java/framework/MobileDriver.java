@@ -33,7 +33,6 @@ public class MobileDriver {
         caps.setCapability("os_version", "13.0");
         caps.setCapability("project", "Demo Android App");
         caps.setCapability("build", "Build 1");
-        caps.setCapability("name", "Sample tests for sample apk");
         caps.setCapability("autoGrantPermissions", true);
 
         driver = new AndroidDriver<>(url, caps);

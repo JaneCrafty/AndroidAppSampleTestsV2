@@ -10,7 +10,7 @@ import static framework.Helpers.StringHelper.GetRandomEmail;
 import static framework.Helpers.StringHelper.GetRandomPassword;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class SampleTest extends Watcher {
+public class SampleTests extends Watcher {
 
     @Test
     public void successfulRegistrationTest() {
@@ -18,6 +18,7 @@ public class SampleTest extends Watcher {
         String password = GetRandomPassword();
 
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
+        mobileDriver.getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
         welcomePage.getEmailInput().sendKeys(email);
         welcomePage.getPasswordInput().sendKeys(password);
         MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
@@ -35,6 +36,7 @@ public class SampleTest extends Watcher {
     @Test
     public void registrationWithEmptyFieldsShouldNotProceedTest() {
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
+        mobileDriver.getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
         welcomePage.getEmailInput().clear();
         welcomePage.getPasswordInput().clear();
         welcomePage.clickSignUpButton(getMobileDriver());
@@ -45,6 +47,7 @@ public class SampleTest extends Watcher {
     @Test
     public void closeAppWithCloseButtonTest() {
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
+        mobileDriver.getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
         welcomePage.getEmailInput().sendKeys(GetRandomEmail());
         welcomePage.getPasswordInput().sendKeys(GetRandomPassword());
         MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
