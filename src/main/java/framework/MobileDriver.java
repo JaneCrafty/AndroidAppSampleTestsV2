@@ -34,7 +34,7 @@ public class MobileDriver {
         caps.setCapability("device", "Google Pixel 7");
         caps.setCapability("os_version", "13.0");
         caps.setCapability("project", "Demo Android App");
-        caps.setCapability("build", "Build 1");
+        caps.setCapability("build", "Build 2");
         caps.setCapability("autoGrantPermissions", true);
         caps.setCapability("name", getTestName());
 
