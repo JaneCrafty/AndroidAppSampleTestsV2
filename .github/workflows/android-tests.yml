@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout project
+      - name: 📅 Checkout project
         uses: actions/checkout@v3
 
       - name: ☕ Set up Java
@@ -29,6 +29,7 @@ jobs:
 
       - name: ⚙️ Build and run Appium tests on BrowserStack
         run: |
+          echo "Running Maven tests with BrowserStack credentials"
           mvn clean test \
-            -Dbrowserstack.user=${{ secrets.BROWSERSTACK_USERNAME }} \
-            -Dbrowserstack.key=${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+            -Dbrowserstack.user="${{ secrets.BROWSERSTACK_USERNAME }}" \
+            -Dbrowserstack.key="${{ secrets.BROWSERSTACK_ACCESS_KEY }}"
