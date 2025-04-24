@@ -6,9 +6,9 @@ import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.function.Consumer;
 
 public class MobileDriver {
     private AndroidDriver<AndroidElement> driver;
@@ -19,10 +19,11 @@ public class MobileDriver {
     public AppiumDriver getDriver() {
         return driver;
     }
-
+    public static Consumer<MobileDriver> onDriverStarted;
     public WebDriverWait getDriverWait() {
         return _wait;
     }
+
     public void StartAndroidDriver() throws MalformedURLException {
         try {
         URL url = new URL(this.url);
@@ -38,9 +39,15 @@ public class MobileDriver {
         caps.setCapability("name", getTestName());
 
         driver = new AndroidDriver<>(url, caps);
+        _wait = new WebDriverWait(driver, 10);
+
+            if (onDriverStarted != null) {
+                onDriverStarted.accept(this);
+            }
 
         System.out.println("✅ Appium session started");
-    } catch (Exception e) {
+
+        } catch (Exception e) {
         System.err.println("❌ Error in StartAndroidDriver: " + e.getMessage());
         e.printStackTrace();
     }
