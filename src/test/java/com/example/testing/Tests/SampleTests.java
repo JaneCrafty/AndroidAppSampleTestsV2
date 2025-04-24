@@ -10,17 +10,17 @@ import static framework.Helpers.StringHelper.GetRandomEmail;
 import static framework.Helpers.StringHelper.GetRandomPassword;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class WelcomeScreenTest extends Watcher {
+public class SampleTests extends Watcher {
 
     @Test
     public void successfulRegistrationTest() {
         String email = GetRandomEmail();
         String password = GetRandomPassword();
 
-        WelcomePage welcomePage  = new WelcomePage(mobileDriver);
+        WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
         welcomePage.getEmailInput().sendKeys(email);
         welcomePage.getPasswordInput().sendKeys(password);
-        MainPage mainPage = welcomePage.clickSignUpButton(mobileDriver);
+        MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
 
         Assertions.assertTrue(mainPage.getTitle().isDisplayed());
         Assertions.assertTrue(mainPage.getTitle().getText().contains(("demo android project")));
@@ -34,23 +34,23 @@ public class WelcomeScreenTest extends Watcher {
 
     @Test
     public void registrationWithEmptyFieldsShouldNotProceed() {
-        WelcomePage welcomePage  = new WelcomePage(mobileDriver);
+        WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
         welcomePage.getEmailInput().clear();
         welcomePage.getPasswordInput().clear();
-        welcomePage.clickSignUpButton(mobileDriver);
+        welcomePage.clickSignUpButton(getMobileDriver());
 
         Assertions.assertTrue(welcomePage.getEmailInput().isDisplayed());
     }
 
     @Test
     public void closeAppWithCloseButton() {
-        WelcomePage welcomePage  = new WelcomePage(mobileDriver);
+        WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
         welcomePage.getEmailInput().sendKeys(GetRandomEmail());
         welcomePage.getPasswordInput().sendKeys(GetRandomPassword());
-        MainPage mainPage = welcomePage.clickSignUpButton(mobileDriver);
+        MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
         mainPage.getCloseButton().click();
 
         mobileDriver.getDriverWait().until(ExpectedConditions.invisibilityOf(mainPage.getEmailField()));
-        Assertions.assertNull(mobileDriver.getSessionId());
+        Assertions.assertNull(getMobileDriver().getSessionId());
     }
 }
