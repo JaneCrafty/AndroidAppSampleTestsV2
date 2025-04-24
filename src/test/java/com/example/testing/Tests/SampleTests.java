@@ -12,14 +12,12 @@ import static framework.Helpers.StringHelper.GetRandomPassword;
 public class SampleTests extends Watcher {
 
     @Test
-    public void successfulRegistrationTest() throws InterruptedException {
+    public void successfulRegistrationTest(){
         String email = GetRandomEmail();
         String password = GetRandomPassword();
 
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
         System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
-        System.out.println("✏️ emailInput is " + welcomePage.getEmailInput());
-        Assertions.assertNotNull(welcomePage.getEmailInput(), "❌ emailInput is null");
         welcomePage.getEmailInput().sendKeys(email);
         welcomePage.getPasswordInput().sendKeys(password);
         MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
@@ -35,11 +33,9 @@ public class SampleTests extends Watcher {
     }
 
     @Test
-    public void registrationWithEmptyFieldsShouldNotProceedTest() throws InterruptedException {
+    public void registrationWithEmptyFieldsShouldNotProceedTest() {
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
         System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
-        Assertions.assertNotNull(welcomePage.getSignUpButton(), "❌ signUpButton is null");
-
         welcomePage.getEmailInput().clear();
         welcomePage.getPasswordInput().clear();
         welcomePage.clickSignUpButton(getMobileDriver());
@@ -48,11 +44,9 @@ public class SampleTests extends Watcher {
     }
 
     @Test
-    public void closeAppWithCloseButtonTest() throws InterruptedException {
+    public void closeAppWithCloseButtonTest() {
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
         System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
-        Assertions.assertNotNull(welcomePage.getSignUpButton(), "❌ signUpButton is null");
-
         welcomePage.getEmailInput().sendKeys(GetRandomEmail());
         welcomePage.getPasswordInput().sendKeys(GetRandomPassword());
         MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());

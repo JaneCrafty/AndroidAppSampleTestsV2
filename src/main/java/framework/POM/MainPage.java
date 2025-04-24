@@ -52,6 +52,7 @@ public class MainPage {
     private WebElement waitForElement(By locator) {
         try {
             mobileDriver.getDriver().getPageSource();
+            System.out.println("📍 Waiting for: " + locator.toString());
             WebDriverWait wait = new WebDriverWait(mobileDriver.getDriver(), 10);
             return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         } catch (Exception e) {
