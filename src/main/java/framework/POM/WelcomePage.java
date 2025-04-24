@@ -56,6 +56,12 @@ public class WelcomePage {
 
         return wait.until(driver -> driver.findElement(locator));
     }
+
+    public void waitUntilLoaded() {
+        waitForElement(emailLocator);
+        waitForElement(passwordLocator);
+        waitForElement(signUpButtonLocator);
+    }
 }
 
 //package framework.POM;

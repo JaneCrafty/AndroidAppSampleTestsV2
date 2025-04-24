@@ -17,6 +17,7 @@ public class SampleTests extends Watcher {
         String password = GetRandomPassword();
 
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
+        welcomePage.waitUntilLoaded();
         System.out.println("✏️ emailInput is " + welcomePage.getEmailInput());
         Assertions.assertNotNull(welcomePage.getEmailInput(), "❌ emailInput is null");
         welcomePage.getEmailInput().sendKeys(email);
@@ -36,6 +37,7 @@ public class SampleTests extends Watcher {
     @Test
     public void registrationWithEmptyFieldsShouldNotProceedTest() {
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
+        welcomePage.waitUntilLoaded();
         Assertions.assertNotNull(welcomePage.getSignUpButton(), "❌ signUpButton is null");
 
         welcomePage.getEmailInput().clear();
@@ -48,6 +50,7 @@ public class SampleTests extends Watcher {
     @Test
     public void closeAppWithCloseButtonTest() {
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
+        welcomePage.waitUntilLoaded();
         Assertions.assertNotNull(welcomePage.getSignUpButton(), "❌ signUpButton is null");
 
         welcomePage.getEmailInput().sendKeys(GetRandomEmail());
