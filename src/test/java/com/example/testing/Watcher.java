@@ -1,10 +1,7 @@
 package com.example.testing;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.*;
 import framework.MobileDriver;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.TestInfo;
 
 import java.net.MalformedURLException;
 
@@ -15,21 +12,15 @@ public class Watcher {
         return mobileDriver;
     }
 
-    @BeforeAll
-    public static void setUp() throws MalformedURLException {
-        mobileDriver = new MobileDriver();
-        mobileDriver.StartAndroidDriver();
-        System.out.println("Driver initialized in @BeforeAll");
-    }
-
     @BeforeEach
-    public void beforeEachTest(TestInfo testInfo) {
-        String testName = testInfo.getDisplayName();
-        getMobileDriver().setTestName(testName);
+    public void setUp(TestInfo testInfo) throws MalformedURLException {
+        mobileDriver = new MobileDriver();
+        mobileDriver.setTestName(testInfo.getDisplayName());
+        mobileDriver.StartAndroidDriver();
     }
 
-    @AfterAll
-    public static void tearDown() {
+    @AfterEach
+    public void tearDown() {
         getMobileDriver().TearDown();
     }
 

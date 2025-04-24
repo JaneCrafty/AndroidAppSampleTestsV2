@@ -15,6 +15,7 @@ public class MobileDriver {
     private AndroidDriver<AndroidElement> driver;
     private WebDriverWait _wait;
     private final String url = "http://hub.browserstack.com/wd/hub";
+    private String testName;
 
     public AppiumDriver getDriver() {
         return driver;
@@ -35,6 +36,7 @@ public class MobileDriver {
         caps.setCapability("project", "Demo Android App");
         caps.setCapability("build", "Build 1");
         caps.setCapability("autoGrantPermissions", true);
+        caps.setCapability("name", getTestName());
 
         driver = new AndroidDriver<>(url, caps);
 
@@ -45,10 +47,12 @@ public class MobileDriver {
     }
     }
 
-    public void setTestName(String name) {
-        if (driver != null) {
-            ((JavascriptExecutor) driver).executeScript("browserstack_executor: {\"action\": \"setSessionName\", \"arguments\": {\"name\": \"" + name + "\" }}");
-        }
+    public void setTestName(String testName) {
+        this.testName = testName;
+    }
+
+    public String getTestName() {
+        return this.testName;
     }
 
     public String getCurrentActivity() {

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.*;
 import static framework.Helpers.StringHelper.GetRandomEmail;
 import static framework.Helpers.StringHelper.GetRandomPassword;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestInstance(TestInstance.Lifecycle.PER_METHOD)
 public class SampleTests extends Watcher {
 
     @Test
