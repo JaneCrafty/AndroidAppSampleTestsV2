@@ -4,11 +4,13 @@ import com.example.testing.Watcher;
 import framework.POM.MainPage;
 import framework.POM.WelcomePage;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static framework.Helpers.StringHelper.GetRandomEmail;
 import static framework.Helpers.StringHelper.GetRandomPassword;
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
+@ExtendWith(Watcher.class)
 public class SampleTests extends Watcher {
 
     @Test
