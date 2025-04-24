@@ -20,6 +20,9 @@ public class WelcomePage {
     private AndroidElement _signUpButton;
 
     public WelcomePage(MobileDriver mobileDriver) {
+        if (mobileDriver.getDriver() == null) {
+            throw new RuntimeException("❌ Driver is null inside WelcomePage constructor");
+        }
         PageFactory.initElements(new AppiumFieldDecorator(mobileDriver.getDriver(), Duration.ofSeconds(10)), this);    }
 
     public AndroidElement getEmailInput() { return _emailInput; }
