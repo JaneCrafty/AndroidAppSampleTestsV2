@@ -3,6 +3,7 @@ package framework;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -32,10 +33,16 @@ public class MobileDriver {
         caps.setCapability("os_version", "13.0");
         caps.setCapability("project", "Demo Android App");
         caps.setCapability("build", "Build 1");
-        caps.setCapability("name", "Welcome screen input test");
+        caps.setCapability("name", "Sample tests for sample apk");
         caps.setCapability("autoGrantPermissions", true);
 
         driver = new AndroidDriver<>(url, caps);
+    }
+
+    public void setTestName(String name) {
+        if (driver != null) {
+            ((JavascriptExecutor) driver).executeScript("browserstack_executor: {\"action\": \"setSessionName\", \"arguments\": {\"name\": \"" + name + "\" }}");
+        }
     }
 
     public void TearDown() {

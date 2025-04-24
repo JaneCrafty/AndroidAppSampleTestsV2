@@ -10,7 +10,7 @@ import static framework.Helpers.StringHelper.GetRandomEmail;
 import static framework.Helpers.StringHelper.GetRandomPassword;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class SampleTests extends Watcher {
+public class SampleTest extends Watcher {
 
     @Test
     public void successfulRegistrationTest() {
@@ -33,7 +33,7 @@ public class SampleTests extends Watcher {
     }
 
     @Test
-    public void registrationWithEmptyFieldsShouldNotProceed() {
+    public void registrationWithEmptyFieldsShouldNotProceedTest() {
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
         welcomePage.getEmailInput().clear();
         welcomePage.getPasswordInput().clear();
@@ -43,7 +43,7 @@ public class SampleTests extends Watcher {
     }
 
     @Test
-    public void closeAppWithCloseButton() {
+    public void closeAppWithCloseButtonTest() {
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
         welcomePage.getEmailInput().sendKeys(GetRandomEmail());
         welcomePage.getPasswordInput().sendKeys(GetRandomPassword());
