@@ -10,7 +10,7 @@ import java.time.Duration;
 
 public class MainPage {
 
-    @AndroidFindBy(id = "com.example.demo:id/email")
+    @AndroidFindBy(id = "com.example.demo:id/title")
     private AndroidElement _title;
 
     @AndroidFindBy(id = "com.example.demo:id/emailField")
