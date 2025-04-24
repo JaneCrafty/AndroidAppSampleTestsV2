@@ -14,7 +14,8 @@ public class Watcher {
 
     @BeforeAll
     public static void setUp() throws MalformedURLException {
-      getMobileDriver().StartAndroidDriver();
+        mobileDriver = new MobileDriver();
+        mobileDriver.StartAndroidDriver();
     }
 
     @AfterAll
