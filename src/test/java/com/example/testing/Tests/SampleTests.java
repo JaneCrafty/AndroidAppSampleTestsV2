@@ -12,13 +12,13 @@ import static framework.Helpers.StringHelper.GetRandomPassword;
 public class SampleTests extends Watcher {
 
     @Test
-    public void successfulRegistrationTest() {
+    public void successfulRegistrationTest() throws InterruptedException {
         String email = GetRandomEmail();
         String password = GetRandomPassword();
 
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
+        Thread.sleep(2000);
         System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
-        welcomePage.waitUntilLoaded();
         System.out.println("✏️ emailInput is " + welcomePage.getEmailInput());
         Assertions.assertNotNull(welcomePage.getEmailInput(), "❌ emailInput is null");
         welcomePage.getEmailInput().sendKeys(email);
@@ -36,10 +36,10 @@ public class SampleTests extends Watcher {
     }
 
     @Test
-    public void registrationWithEmptyFieldsShouldNotProceedTest() {
+    public void registrationWithEmptyFieldsShouldNotProceedTest() throws InterruptedException {
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
+        Thread.sleep(2000);
         System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
-        welcomePage.waitUntilLoaded();
         Assertions.assertNotNull(welcomePage.getSignUpButton(), "❌ signUpButton is null");
 
         welcomePage.getEmailInput().clear();
@@ -50,10 +50,10 @@ public class SampleTests extends Watcher {
     }
 
     @Test
-    public void closeAppWithCloseButtonTest() {
+    public void closeAppWithCloseButtonTest() throws InterruptedException {
         WelcomePage welcomePage = new WelcomePage(getMobileDriver());
+        Thread.sleep(2000);
         System.out.println("📄 Page source:\n" + getMobileDriver().getDriver().getPageSource());
-        welcomePage.waitUntilLoaded();
         Assertions.assertNotNull(welcomePage.getSignUpButton(), "❌ signUpButton is null");
 
         welcomePage.getEmailInput().sendKeys(GetRandomEmail());
