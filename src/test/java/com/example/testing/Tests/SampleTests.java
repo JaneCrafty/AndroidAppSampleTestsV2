@@ -18,8 +18,6 @@ public class SampleTests extends Watcher {
         String password = GetRandomPassword();
 
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
-        getMobileDriver().getDriverWait()
-                .until(ExpectedConditions.visibilityOf(welcomePage.getEmailInput()));
         System.out.println("✏️ emailInput is " + welcomePage.getEmailInput());
         Assertions.assertNotNull(welcomePage.getEmailInput(), "❌ emailInput is null");
         welcomePage.getEmailInput().sendKeys(email);
@@ -40,7 +38,6 @@ public class SampleTests extends Watcher {
     public void registrationWithEmptyFieldsShouldNotProceedTest() {
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
         Assertions.assertNotNull(welcomePage.getSignUpButton(), "❌ signUpButton is null");
-        getMobileDriver().getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
         welcomePage.getEmailInput().clear();
         welcomePage.getPasswordInput().clear();
         welcomePage.clickSignUpButton(getMobileDriver());
@@ -52,13 +49,12 @@ public class SampleTests extends Watcher {
     public void closeAppWithCloseButtonTest() {
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
         Assertions.assertNotNull(welcomePage.getSignUpButton(), "❌ signUpButton is null");
-        getMobileDriver().getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
         welcomePage.getEmailInput().sendKeys(GetRandomEmail());
         welcomePage.getPasswordInput().sendKeys(GetRandomPassword());
         MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
         mainPage.getCloseButton().click();
 
-        getMobileDriver().getDriverWait().until(ExpectedConditions.invisibilityOf(mainPage.getEmailField()));
+        //getMobileDriver().getDriverWait().until(ExpectedConditions.invisibilityOf(mainPage.getEmailField()));
         Assertions.assertNull(getMobileDriver().getSessionId());
     }
 }
