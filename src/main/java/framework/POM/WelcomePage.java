@@ -49,18 +49,13 @@ public class WelcomePage {
     }
 
     private WebElement waitForElement(By locator) {
+        System.out.println("driver class: " + mobileDriver.getDriver().getClass().getName());
         FluentWait<AppiumDriver<WebElement>> wait = new FluentWait<>((AppiumDriver<WebElement>) mobileDriver.getDriver())
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoring(NoSuchElementException.class);
 
         return wait.until(driver -> driver.findElement(locator));
-    }
-
-    public void waitUntilLoaded() {
-        waitForElement(emailLocator);
-        waitForElement(passwordLocator);
-        waitForElement(signUpButtonLocator);
     }
 }
 

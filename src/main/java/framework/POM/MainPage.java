@@ -31,6 +31,7 @@ public class MainPage {
     }
 
     public WebElement getEmailField() {
+        System.out.println("driver class: " + mobileDriver.getDriver().getClass().getName());
         return waitForElement(emailFieldLocator);
     }
 
@@ -47,6 +48,7 @@ public class MainPage {
     }
 
     private WebElement waitForElement(By locator) {
+        System.out.println("driver class: " + mobileDriver.getDriver().getClass().getName());
         FluentWait<AppiumDriver<WebElement>> wait = new FluentWait<>((AppiumDriver<WebElement>) mobileDriver.getDriver())
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofMillis(500))
