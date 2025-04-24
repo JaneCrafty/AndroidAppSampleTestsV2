@@ -18,7 +18,7 @@ public class SampleTests extends Watcher {
         String password = GetRandomPassword();
 
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
-        mobileDriver.getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
+        getMobileDriver().getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
         welcomePage.getEmailInput().sendKeys(email);
         welcomePage.getPasswordInput().sendKeys(password);
         MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
@@ -36,7 +36,7 @@ public class SampleTests extends Watcher {
     @Test
     public void registrationWithEmptyFieldsShouldNotProceedTest() {
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
-        mobileDriver.getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
+        getMobileDriver().getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
         welcomePage.getEmailInput().clear();
         welcomePage.getPasswordInput().clear();
         welcomePage.clickSignUpButton(getMobileDriver());
@@ -47,13 +47,13 @@ public class SampleTests extends Watcher {
     @Test
     public void closeAppWithCloseButtonTest() {
         WelcomePage welcomePage  = new WelcomePage(getMobileDriver());
-        mobileDriver.getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
+        getMobileDriver().getDriverWait().until(ExpectedConditions.visibilityOf(welcomePage.getSignUpButton()));
         welcomePage.getEmailInput().sendKeys(GetRandomEmail());
         welcomePage.getPasswordInput().sendKeys(GetRandomPassword());
         MainPage mainPage = welcomePage.clickSignUpButton(getMobileDriver());
         mainPage.getCloseButton().click();
 
-        mobileDriver.getDriverWait().until(ExpectedConditions.invisibilityOf(mainPage.getEmailField()));
+        getMobileDriver().getDriverWait().until(ExpectedConditions.invisibilityOf(mainPage.getEmailField()));
         Assertions.assertNull(getMobileDriver().getSessionId());
     }
 }
